@@ -87,14 +87,14 @@ class Sequential:
     # learn **kwargs
     def __init__(self,layers,lossfn,opt_fn):
         if not isinstance(layers,list):
-            model = [layers]
+            self.model = [layers]
         else:
-            model = layers
+            self.model = layers
 
     # check arguments when it comes to validation
     def forward(self,x):
-        out = layers[0].forward(x)
-        for layer in layers[1:]:
+        out = self.model[0].forward(x)
+        for layer in self.model[1:]:
             out = layer.forward(out)
         return out
 
