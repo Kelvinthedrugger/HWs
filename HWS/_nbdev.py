@@ -30,11 +30,21 @@ index = {"triee": "00_core.ipynb",
          "y1": "01_oval_clean.ipynb",
          "y2": "01_oval_clean.ipynb",
          "layer_init": "02_NN.ipynb",
-         "linear": "02_NN.ipynb"}
+         "linear": "02_NN.ipynb",
+         "fetch": "03_NN_numpy.ipynb",
+         "mnist": "03_NN_numpy.ipynb",
+         "kaiming_uniform": "03_NN_numpy.ipynb",
+         "kaiming_normal": "03_NN_numpy.ipynb",
+         "Linear": "03_NN_numpy.ipynb",
+         "MSELoss": "03_NN_numpy.ipynb",
+         "CELoss": "03_NN_numpy.ipynb",
+         "SGD": "03_NN_numpy.ipynb",
+         "Adam": "03_NN_numpy.ipynb"}
 
 modules = ["core.py",
            "to_submit.py",
-           "nn.py"]
+           "nn.py",
+           "nnsig.py"]
 
 doc_url = "https://Kelvinthedrugger.github.io/HWs/"
 
