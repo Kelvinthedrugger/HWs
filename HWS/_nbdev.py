@@ -39,7 +39,8 @@ index = {"triee": "00_core.ipynb",
          "MSELoss": "03_NN_numpy.ipynb",
          "CELoss": "03_NN_numpy.ipynb",
          "SGD": "03_NN_numpy.ipynb",
-         "Adam": "03_NN_numpy.ipynb"}
+         "Adam": "03_NN_numpy.ipynb",
+         "Sequential": "03_NN_numpy.ipynb"}
 
 modules = ["core.py",
            "to_submit.py",
