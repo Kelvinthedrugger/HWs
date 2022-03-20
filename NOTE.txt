@@ -1,6 +1,12 @@
+ 
  our original approach doesn't work, since nbdev is optimized for 
  , building a library/project, instead of merely a function 
   to convert scripts, namely, calling "notebook2script()"
   will write scripts "from every cell that has #export in this folder"
   , not just in the current notebook, to whatever folder you've assigned
   => massive file from other notebooks will be re-written into current folder
+
+
+ use different environment in nbs is fine, since one can always run it from shell
+
+
