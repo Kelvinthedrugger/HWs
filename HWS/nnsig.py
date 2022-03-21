@@ -132,6 +132,7 @@ class Sequential:
         for _ in range(epoch):
             idx = np.random.randint(0,ln,size=batch_size)
             x_ = x[idx].reshape((-1,28*28))
+            # this was probably wrong, one-hot encoding is required
             y_ = y[idx].reshape((y[idx].shape[0],1))
             out = self.forward(x_)
             #print(np.argmax(x_),y_)
