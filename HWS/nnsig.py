@@ -62,7 +62,8 @@ class Linear:
 
     def backward(self,bpass):
         self.grad = (self.fpass.T) @ bpass
-        bpass = bpass @ (self.weight.T)
+        # without returning it, it doesn't work
+        # bpass = bpass @ (self.weight.T)
 
 # Cell
 def MSELoss(yhat,y,num_class=10,supervised=True):
@@ -107,7 +108,6 @@ class Sequential:
 
     def backward(self,grad):
         for layer in reversed(self.model):
-            # check if grad = grad @ (weight.T) works
             layer.backward(grad)
             grad = grad @ (layer.weight.T)
 
