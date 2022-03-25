@@ -178,6 +178,8 @@ class Conv:
 
 # Cell
 # naive function of convolution
+# to be compact, requires to calculate the general form of input/output dim and relationship between them
+# now, let's use quick fix for default case
 def naive(f,x,st=2,ks=3):
     out = np.zeros((((x.shape[0]-ks)//st+1),((x.shape[1]-ks)//st+1)))
     for i in range(0,x.shape[0]-1,st):
@@ -185,7 +187,10 @@ def naive(f,x,st=2,ks=3):
             # for debug
             # print(i,":",i+ks,"->",j,":",j+ks)
             # print(x[i:i+ks,j:j+ks])
-            print(f.shape,x[i:i+ks,j:j+ks].shape)
+
+            # if shape are not the same: break
+            if x[i:i+ks,j:j+ks].shape[0] != ks or x[i:i+ks,j:j+ks].shape[1] != ks:
+                break
             out[i//st,j//st] = np.multiply(f,x[i:i+ks,j:j+ks]).sum()
 
     return out
