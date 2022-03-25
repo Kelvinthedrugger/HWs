@@ -199,6 +199,13 @@ def naive(f,x,st=2,ks=3):
 # Cell
 # can be used to test Conv class
 # add Conv in naive way
+
+"""
+        About the loop: should try to reduce the time of walking thru input feature
+        now: loop filters{loop thru input} ## SLOW
+        faster version will be to loop thru every filter at the inner-est loop, then loop thru input
+         , which will give us #walking thru = 1
+"""
 class Conv_dump:
     def __init__(self,filters=1,kernelsize=3,stride=2,padding=0,init_fn=kaiming_uniform):
         self.f = init_fn(kernelsize,kernelsize,filters)
@@ -214,17 +221,19 @@ class Conv_dump:
         st = self.st
 
         out = np.zeros((((x.shape[0]-ks)//st+1),((x.shape[1]-ks)//st+1),f.shape[-1]))
-
-        """
-        About the loop: should try to reduce the time of walking thru input feature
-        now: loop filters{loop thru input} ## SLOW
-        faster version will be to loop thru every filter at the inner-est loop, then loop thru input
-         , which will give us #walking thru = 1
-        """
-        ## DEBUG
+        """## DEBUG
         # now, it's slow
         for k in range(f.shape[-1]):
             out[:,:,k] = naive(f[:,:,k],x)
+        """
+        # then the input feature map
+        for i in range(0,x.shape[0]-1,st):
+            for j in range(0,x.shape[1]-1,st):
+                # loop thru every filter first
+                for k in range(f.shape[-1]):
+                    if x[i:i+ks,j:j+ks,k].shape != (ks,ks):
+                        break
+                    out[i//st,j//st,k] = np.multiply(f,x[i:i+ks,j:j+ks]).sum()
 
         self.fpass = x
         return out
