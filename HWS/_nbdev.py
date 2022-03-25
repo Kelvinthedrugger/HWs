@@ -44,6 +44,7 @@ index = {"triee": "00_core.ipynb",
          "Adam": "03_NN_numpy.ipynb",
          "Sequential": "03_NN_numpy.ipynb",
          "Conv": "03_NN_numpy.ipynb",
+         "naive": "03_NN_numpy.ipynb",
          "Conv_dump": "03_NN_numpy.ipynb",
          "Flatten": "03_NN_numpy.ipynb"}
 
