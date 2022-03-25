@@ -185,6 +185,7 @@ def naive(f,x,st=2,ks=3):
             # for debug
             # print(i,":",i+ks,"->",j,":",j+ks)
             # print(x[i:i+ks,j:j+ks])
+            print(f.shape,x[i:i+ks,j:j+ks].shape)
             out[i//st,j//st] = np.multiply(f,x[i:i+ks,j:j+ks]).sum()
 
     return out
@@ -196,7 +197,7 @@ def naive(f,x,st=2,ks=3):
 class Conv_dump:
     def __init__(self,filters=1,kernelsize=3,stride=2,padding=0,init_fn=kaiming_uniform):
         self.f = init_fn(kernelsize,kernelsize,filters)
-        self.grad = np.zeros((filters,kernelsize,kernelsize))
+        self.grad = np.zeros((kernelsize,kernelsize,filters))
         self.fpass = None
         self.ks = kernelsize
         self.st = stride
@@ -208,7 +209,6 @@ class Conv_dump:
         st = self.st
 
         out = np.zeros((((x.shape[0]-ks)//st+1),((x.shape[1]-ks)//st+1),f.shape[-1]))
-        #print(f.shape,f.shape[-1],out.shape)
 
         """
         About the loop: should try to reduce the time of walking thru input feature
@@ -219,13 +219,20 @@ class Conv_dump:
         ## DEBUG
         # now, it's slow
         for k in range(f.shape[-1]):
-            out[:,:,k] = naive(f[k],x)
+            out[:,:,k] = naive(f[:,:,k],x)
 
+        self.fpass = x
         return out
 
     def backward(self,grad):
         # transpose weight to calculate gradient ?
-        return
+        # loop
+        #   x = input[i:i+ks,j:j+ks] # rth ks*ks matrix
+        #   y = rth element in grad
+        #   grad_per_step = x*y
+        # convops
+        # return it
+        return grad
 
 # Cell
 # not tested: 90% certain it's correct
