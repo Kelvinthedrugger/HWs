@@ -256,7 +256,7 @@ class Conv_dump:
             for j in range(0,fpass.shape[1]-1,st):
                 # iterative thru each filter so we don't have to re-run the whole input feature
                 for k in range(ftr):
-                    if fpass[i:i+ks,j:j+ks].shape[0] != ks or fpass[i:i+ks,j:j+ks].shape[1] != ks:
+                    if fpass[i:i+ks,j:j+ks,k].shape != (ks,ks):
                         break
                     #print(bpass.shape,fpass[i:i+ks,j:j+ks,k].shape)
                     grad[:,:,k] += np.multiply(bpass[i//2,j//2,k],fpass[i:i+ks,j:j+ks,k])
