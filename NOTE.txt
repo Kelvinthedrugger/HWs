@@ -7,6 +7,9 @@
   => massive file from other notebooks will be re-written into current folder
 
 
- use different environment in nbs is fine, since one can always run it from shell
+ use different environment (virtual or conda ..) in nbs is fine, since one can always run it from shell
 
+
+
+ try publish it to pypi ?, or modify CI configuration
 
