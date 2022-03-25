@@ -286,8 +286,11 @@ class Flatten:
         (b,d) -> (1, b*d)
 
         """
-        self.shape = x.shape
-        return x.reshape((1,-1))
+        if self.shape is None:
+            self.shape = x.shape
+        if len(x.shape) < 3:
+            return x.reshape((1,-1))
+        return x.reshape((x.shape[0],-1))
 
     def backward(self,grad):
         return grad.reshape(self.shape)
