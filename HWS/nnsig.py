@@ -229,7 +229,7 @@ class Conv_dump:
         self.fpass = x
         return out
 
-    def backward(self,grad):
+    def backward(self,bpass):
         # transpose weight to calculate gradient ?
         # loop
         #   x = input[i:i+ks,j:j+ks] # rth ks*ks matrix
@@ -237,7 +237,24 @@ class Conv_dump:
         #   grad_per_step = x*y
         # convops
         # return it
-        return grad
+        ftr = self.f.shape[-1]
+        ks = self.ks
+        st = self.st
+
+        grad = np.zeros((ks,ks,ftr))
+        fpass = self.fpass
+        for i in range(0,fpass.shape[0]-1,st):
+            for j in range(0,fpass.shape[1]-1,st):
+                # iterative thru each filter so we don't have to re-run the whole input feature
+                for k in range(ftr):
+                    if fpass[i:i+ks,j:j+ks].shape[0] != ks or fpass[i:i+ks,j:j+ks].shape[1] != ks:
+                        break
+                    #print(bpass.shape,fpass[i:i+ks,j:j+ks,k].shape)
+                    grad[:,:,k] += np.multiply(bpass[i//2,j//2,k],fpass[i:i+ks,j:j+ks,k])
+
+        self.grad = grad
+
+        # return the backproped gradient ?
 
 # Cell
 # not tested: 90% certain it's correct
