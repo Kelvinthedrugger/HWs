@@ -219,19 +219,7 @@ class Conv_dump:
         ## DEBUG
         # now, it's slow
         for k in range(f.shape[-1]):
-            out[:,:,k] = naive(f[0],x)
-
-        return out
-
-        """ below will not be executed"""
-
-        # filter
-        for k in range(f.shape[-1]):
-            # select row to loop thru
-            for i in range(0,x.shape[0]-1,st):
-                # loop thru the row
-                for j in range(0,x.shape[1]-1,st):
-                    out[i//st,j//st,k] = np.multiply(f[:,:,k],x[i:i+ks,j:j+ks]).sum()
+            out[:,:,k] = naive(f[k],x)
 
         return out
 
