@@ -35,12 +35,17 @@ index = {"triee": "00_core.ipynb",
          "mnist": "03_NN_numpy.ipynb",
          "kaiming_uniform": "03_NN_numpy.ipynb",
          "kaiming_normal": "03_NN_numpy.ipynb",
+         "stat": "03_NN_numpy.ipynb",
          "Linear": "03_NN_numpy.ipynb",
          "MSELoss": "03_NN_numpy.ipynb",
+         "NNL": "03_NN_numpy.ipynb",
          "CELoss": "03_NN_numpy.ipynb",
          "SGD": "03_NN_numpy.ipynb",
          "Adam": "03_NN_numpy.ipynb",
-         "Sequential": "03_NN_numpy.ipynb"}
+         "Sequential": "03_NN_numpy.ipynb",
+         "Conv": "03_NN_numpy.ipynb",
+         "Conv_dump": "03_NN_numpy.ipynb",
+         "Flatten": "03_NN_numpy.ipynb"}
 
 modules = ["core.py",
            "to_submit.py",
