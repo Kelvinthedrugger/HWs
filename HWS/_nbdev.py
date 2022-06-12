@@ -46,12 +46,17 @@ index = {"triee": "00_core.ipynb",
          "Conv": "03_NN_numpy.ipynb",
          "naive": "03_NN_numpy.ipynb",
          "Conv_dump": "03_NN_numpy.ipynb",
-         "Flatten": "03_NN_numpy.ipynb"}
+         "Flatten": "03_NN_numpy.ipynb",
+         "people": "04_DNAA.ipynb",
+         "data": "04_DNAA.ipynb",
+         "frags": "04_DNAA.ipynb",
+         "checkppl": "04_DNAA.ipynb"}
 
 modules = ["core.py",
            "to_submit.py",
            "nn.py",
-           "nnsig.py"]
+           "nnsig.py",
+           "dnaa.py"]
 
 doc_url = "https://Kelvinthedrugger.github.io/HWs/"
 
