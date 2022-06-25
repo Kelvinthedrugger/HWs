@@ -35,7 +35,7 @@ echo "running tests"
 ./run_tests.sh
 
 echo "making systemwide symlink"
-sudo ln -sf $(pwd)/qira /usr/local/bin/qira
+ln -sf $(pwd)/qira /usr/local/bin/qira
 
 echo "***************************************"
 echo "  Thanks for installing QIRA"
