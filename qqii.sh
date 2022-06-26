@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# alter from https://github.com/geohot/qira/blob/master/install.sh
+# since there's no 'sudo' normally inside a container
+
 # install system deps
 if [ $(which apt-get) ]; then
   echo "installing deps for ubuntu"
