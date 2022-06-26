@@ -5,7 +5,7 @@ int main()
     volatile int a = 54, b = 12, c = 88;
 
     int i;
-    for (i = 0; i < 5; ++i_
+    for (i = 0; i < 5; ++i)
     {
         c += b + i;
     }
